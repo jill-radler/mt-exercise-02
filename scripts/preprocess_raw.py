@@ -7,3 +7,6 @@ for line in sys.stdin:
         line = line.replace(u'\ufeff', '')
         line = " ".join(line.split())
         sys.stdout.write(line + "\n")
+
+
+        #hello hello
