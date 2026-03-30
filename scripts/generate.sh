@@ -13,10 +13,13 @@ mkdir -p $samples
 num_threads=4
 device=""
 
+checkpoint=$(realpath $1)
+outfile=$2
+
 (cd $tools/pytorch-examples/word_language_model &&
     CUDA_VISIBLE_DEVICES=$device OMP_NUM_THREADS=$num_threads python generate.py \
         --data $data/alice \
         --words 100 \
-        --checkpoint $models/model.pt \
-        --outf $samples/sample
+        --checkpoint $checkpoint \
+        --outf $samples/$outfile
 )

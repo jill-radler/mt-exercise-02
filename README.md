@@ -42,3 +42,32 @@ Generate (sample) some text from a trained model with:
     ./scripts/generate.sh
 
 
+# Custom Dataset (Task 1)
+
+I modified the data preparation to use custom dataset instead of the default one.
+
+Changes made:
+
+- Replaced the Grimm dataset in download_data.sh
+- Downloaded three texts from Project Gutenberg using 'curl'(better for MAC)
+    - Alice's adventure in Wonderland
+    - Through the Looking-Glass
+    - Sylvie and Bruno
+- Combined those into a single dataset
+- Limited the vocabulary size to 5000
+- Split the dataset into the 3 segments
+
+Commands: in this order
+
+    ./scripts/download_data.sh
+    ./scripts/train.sh
+    ./scripts/generate.sh
+
+
+Training:
+
+- Updated the train.sh to use "data/alice" instead of the grimm one
+
+Generation:
+
+- Again, updated the generate.sh to load the model and generate text.
