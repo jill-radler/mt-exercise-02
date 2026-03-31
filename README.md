@@ -42,7 +42,7 @@ Generate (sample) some text from a trained model with:
     ./scripts/generate.sh
 
 
-# Custom Dataset (Task 1)
+# Task 1 Training a recurrent neural network language model
 
 I modified the data preparation to use custom dataset instead of the default one.
 
@@ -71,3 +71,59 @@ Training:
 Generation:
 
 - Again, updated the generate.sh to load the model and generate text.
+
+# Task 2 Parameter tuning: Experimenting with dropout
+
+Changes made:
+
+- In main_modified.py
+    - added the "--log-file" argument
+    - logs training, validation and test perplexities to csv files
+- In train.sh
+    - modified it to train models with dropout values 0.0,0.2,0.4,0.6,0.8
+    - saves one model and logfile per dropout
+- log_plots.py
+    - read the csv log files
+    - creates tables and plots for training
+
+
+Commands:
+
+- ./scripts/download_data.sh
+- ./scripts/train.sh
+- python scripts/log_plots.py
+- ./scripts/generate.sh models/model_dropout_0.2.pt best.txt
+- ./scripts/generate.sh models/model_dropout_0.8.pt worst.txt
+
+please note: I did install additional packages for the plots and tables: pip install pandas, matplotlib
+
+Important outputs:
+
+- Trained models:
+    - models/model_dropout_0.0.pt
+    - model_dropout_0.2.pt
+    - model_dropout_0.4.pt
+    - model_dropout_0.6.pt
+    - model_dropout_0.8.pt
+
+- Log files:
+    - logs/log_dropout_0.0.csv
+    - log_dropout_0.2.csv
+    - log_dropout_0.4.csv
+    - log_dropout_0.6.csv
+    - log_dropout_0.8.csv
+
+- Tables and plots:
+    - results/train_table.csv
+    - valid_table.csv
+    - test_table.csv
+    - train_plot.png
+    - valid_plot.png
+
+Creation of tables:
+I did convert the csv files into tables in Excel. This was for me, the simplest way to do it. 
+
+- Generated samples:
+    - samples/best.txt
+    - worst.txt
+
